@@ -5,12 +5,12 @@
 ## Login   <hervie_g@epitech.net>
 ## 
 ## Started on  Thu Oct  4 17:40:48 2012 guillaume hervier
-## Last update Fri Oct  5 11:51:51 2012 guillaume hervier
+## Last update Fri Oct  5 12:22:05 2012 guillaume hervier
 ##
 
 source ./config.sh
 
-USAGE="$0 <create|edit|norme|rendu|test|help <command>>"
+USAGE="$0 <create|edit|norme|rendu|test|fix|conf|help <command>>"
 
 if [ $# == 0 ]; then
     echo $USAGE
