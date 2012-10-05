@@ -231,6 +231,7 @@ class norme:
             self.check_return()
             self.check_operateur('+')
             self.check_operateur('|')
+            self.check_operateur('=')
             self.check_typedef() #DOIT TOUJOURS ETRE EN DERNIER
 
     def print_error(self, msg):
