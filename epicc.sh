@@ -5,7 +5,7 @@
 ## Login   <hervie_g@epitech.net>
 ## 
 ## Started on  Thu Oct  4 17:40:48 2012 guillaume hervier
-## Last update Fri Oct  5 12:22:05 2012 guillaume hervier
+## Last update Fri Oct  5 12:24:46 2012 guillaume hervier
 ##
 
 source ./config.sh
@@ -22,6 +22,8 @@ function rendu {
 	    source $1/conf.sh
 
 	    echo "Rendering ${EXO_FUNCNAME}..."
+	    echo "- Copying '$1/code.c' to '$RENDU_DIR/$EXO_FILENAME'"
+	    echo ""
 	    cp $1/code.c $RENDU_DIR/$EXO_FILENAME
 	fi
     fi
