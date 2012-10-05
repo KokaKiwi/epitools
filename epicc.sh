@@ -5,7 +5,7 @@
 ## Login   <hervie_g@epitech.net>
 ## 
 ## Started on  Thu Oct  4 17:40:48 2012 guillaume hervier
-## Last update Thu Oct  4 22:39:38 2012 guillaume hervier
+## Last update Fri Oct  5 11:51:51 2012 guillaume hervier
 ##
 
 source ./config.sh
@@ -22,7 +22,7 @@ function rendu {
 	    source $1/conf.sh
 
 	    echo "Rendering ${EXO_FUNCNAME}..."
-	    cp $1/code.c $RENDU_DIR/$EXO_FUNCNAME.c
+	    cp $1/code.c $RENDU_DIR/$EXO_FILENAME
 	fi
     fi
 }
@@ -52,6 +52,9 @@ function help {
 	    "clean")
 		echo "$0 clean"
 		;;
+	    "conf")
+		echo "$0 conf <folder>"
+		;;
 	    "fix")
 		echo "$0 fix <folder> <function name>"
 		;;
@@ -80,7 +83,7 @@ case $1 in
 	fi
 	cp skel/conf.sh $2/conf.sh
 
-	sed -i "s/FNAME/$3/g" $2
+	sed -i "s/FNAME/$3/g" $2/conf.sh
 	;;
     "edit")
 	if [ $# = 1 ]; then
@@ -94,6 +97,13 @@ case $1 in
 	fi
 	
 	emacs -nw $2/$EXO_FILE.c
+	;;
+    "conf")
+	if [ $# = 1 ]; then
+	    help "conf"
+	fi
+
+	emacs -nw $2/conf.sh
 	;;
     "norme")
 	if [ $# = 1 ]; then
