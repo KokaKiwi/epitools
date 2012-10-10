@@ -5,7 +5,7 @@
 ## Login   <hervie_g@epitech.net>
 ## 
 ## Started on  Tue Oct  9 10:17:48 2012 guillaume hervier
-## Last update Wed Oct 10 15:29:01 2012 guillaume hervier
+## Last update Wed Oct 10 16:42:37 2012 guillaume hervier
 ##
 
 source ./config.sh
@@ -87,11 +87,11 @@ EOF
 	done | column
 	;;
     "test")
-	cc main.c -L. -lmy -I/home/hervie_g/epitest/include
+	cc main.c -L. -lmy -I/home/$USER/epitest/include
 	./a.out
 	;;
     "rendu")
-	cp libmy.a ~/afs/rendu/lib/my
+	cp libmy.a /u/all/$USER/rendu/lib/my
 	echo "Done."
 	;;
     "clean")
