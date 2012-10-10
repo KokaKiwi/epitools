@@ -5,12 +5,12 @@
 ## Login   <hervie_g@epitech.net>
 ## 
 ## Started on  Tue Oct  9 10:17:48 2012 guillaume hervier
-## Last update Wed Oct 10 12:23:09 2012 guillaume hervier
+## Last update Wed Oct 10 15:29:01 2012 guillaume hervier
 ##
 
 source ./config.sh
 
-USAGE="$0 <create|edit|compile|norme|clean|help [command]>"
+USAGE="$0 <create|edit|compile|norme|rendu|list|clean|help [command]>"
 
 if [ $# == 0 ]; then
     echo $USAGE
@@ -76,6 +76,23 @@ EOF
 	    NORME=`~/epitools/norme.py $d/$FN_NAME.c -score`
 	    printf "%25s : %s\n" "$FN_NAME" "$NORME"
 	done
+	;;
+    "list")
+	FN_PATTERN="fn_*"
+
+	for d in `find -type d -name "$FN_PATTERN"`; do
+	    source $d/conf.sh
+
+	    printf "%-8s\n" "$FN_NAME"
+	done | column
+	;;
+    "test")
+	cc main.c -L. -lmy -I/home/hervie_g/epitest/include
+	./a.out
+	;;
+    "rendu")
+	cp libmy.a ~/afs/rendu/lib/my
+	echo "Done."
 	;;
     "clean")
 	rm -rf target
