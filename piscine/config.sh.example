@@ -2,3 +2,5 @@ DAY=Jour_XX
 RENDU_DIR=~/epitest/rendu
 NORME_EXECUTABLE_PATH=~/epitools/norme.py
 NORME_ARGS="-score -libc"
+CC_EXECUTABLE=cc
+CC_ARGS=""

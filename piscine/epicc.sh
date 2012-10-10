@@ -5,7 +5,7 @@
 ## Login   <hervie_g@epitech.net>
 ## 
 ## Started on  Thu Oct  4 17:40:48 2012 guillaume hervier
-## Last update Fri Oct  5 12:24:46 2012 guillaume hervier
+## Last update Wed Oct 10 11:55:33 2012 guillaume hervier
 ##
 
 source ./config.sh
@@ -22,9 +22,9 @@ function rendu {
 	    source $1/conf.sh
 
 	    echo "Rendering ${EXO_FUNCNAME}..."
-	    echo "- Copying '$1/code.c' to '$RENDU_DIR/$EXO_FILENAME'"
+	    echo "- Copying '$1/code.c' to '$RENDU_DIR/$EXO_DIR/$EXO_FILENAME'"
 	    echo ""
-	    cp $1/code.c $RENDU_DIR/$EXO_FILENAME
+	    cp $1/code.c $RENDU_DIR/$EXO_DIR/$EXO_FILENAME
 	fi
     fi
 }
@@ -77,6 +77,7 @@ case $1 in
 
 	find $2 -type f -exec sed -i "s/FNAME/$3/g" {} \;
 	find $2 -type f -exec sed -i "s/DAY/$DAY/g" {} \;
+	find $2 -type f -exec sed -i "s/DDIR/$2/g" {} \;
 	echo "Done."
 	;;
     "fix")
@@ -86,6 +87,7 @@ case $1 in
 	cp skel/conf.sh $2/conf.sh
 
 	sed -i "s/FNAME/$3/g" $2/conf.sh
+	sed -i "s/DDIR/$2/g" $2/conf.sh
 	;;
     "edit")
 	if [ $# = 1 ]; then
@@ -130,9 +132,17 @@ case $1 in
 	if [ $# = 1 ]; then
 	    help "test"
 	fi
-	cc lib/*.c $2/code.c $2/main.c -o $2/a.out
-	
-	$2/a.out
+	cc $2/code.c $2/main.c -o $2/a.out -L/home/hervie_g/epitest/libmy -lmy -I/home/hervie_g/epitest/include
+
+	_ARGS=""
+	args=("$@")
+
+	for (( i = 2 ; i < $# ; i++ )); do
+	    arg=${args[$i]}
+	    _ARGS="$_ARGS \"$arg\""
+	done
+
+	bash -c "$2/a.out $_ARGS"
 	;;
     "help")
 	help $2
